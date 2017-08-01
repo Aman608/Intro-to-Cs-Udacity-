@@ -1,5 +1,6 @@
 #Finish crawl web
 import urllib
+
 def get_page(url):
         try:
             f = urllib.urlopen(url)
@@ -39,12 +40,48 @@ def get_all_links(page):
 def crawl_web(seed):
     tocrawl = [seed]
     crawled = []
+	index = []
     while tocrawl:
         page = tocrawl.pop()
         if page not in crawled:
-            union(tocrawl, get_all_links(get_page(page)))
+			content = get_page(page)
+			add_page_to_index(index,page,content)
+            union(tocrawl, get_all_links(content))
             crawled.append(page)
     return crawled
 
+def add_to_index(index,keyword,url):
+    for entry in index:
+        if entry[0] == keyword and url not in e[1]:
+            entry[1].append(url)
+            return
+    index.append([keyword,[url]])
 
-
+def lookup(index, keyword):
+	for e in index:
+		if e[0]==keyword:
+			return e[1]
+	return []
+def add_page_to_index(index,url,content):
+	l = contents.split()
+	for e in l:
+		add_to_index(index,e,url)
+			
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
